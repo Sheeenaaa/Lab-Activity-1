@@ -2,7 +2,7 @@ import { createStore } from 'vuex';
 
 export default createStore({
   state: {
-    cart: [], // Cart items with quantity
+    cart: [],
     products: [
       { id: 1, name: "Apple MacBook Air M2", price: "55,944.00" },
       { id: 2, name: "Samsung Galaxy S24", price: "44,744.00" },
@@ -20,9 +20,9 @@ export default createStore({
     ADD_TO_CART(state, product) {
       const existingItem = state.cart.find(item => item.id === product.id);
       if (existingItem) {
-        existingItem.quantity++; // Increase quantity if item exists
+        existingItem.quantity++; 
       } else {
-        state.cart.push({ ...product, quantity: 1 }); // Add new item with quantity 1
+        state.cart.push({ ...product, quantity: 1 }); 
       }
     },
     DECREASE_QUANTITY(state, productId) {
@@ -30,7 +30,7 @@ export default createStore({
       if (item) {
         item.quantity--; // Reduce quantity
         if (item.quantity === 0) {
-          state.cart = state.cart.filter(i => i.id !== productId); // Remove if zero
+          state.cart = state.cart.filter(i => i.id !== productId); 
         }
       }
     }
